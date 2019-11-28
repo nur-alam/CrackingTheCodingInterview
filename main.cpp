@@ -1,38 +1,62 @@
 // https://www.geeksforgeeks.org/k-th-missing-element-in-an-unsorted-array/
 // https://www.geeksforgeeks.org/find-the-element-that-appears-once-in-a-sorted-array/
 // https://www.geeksforgeeks.org/last-duplicate-element-sorted-array/
-// https://www.geeksforgeeks.org/binary-search/
-// https://www.geeksforgeeks.org/find-first-and-last-positions-of-an-element-in-a-sorted-array/
+// https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
+//https://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/
+//https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/
+//https://www.geeksforgeeks.org/check-if-an-array-is-sorted-and-rotated/
+//https://www.geeksforgeeks.org/sort-rotated-sorted-array/
 
-#include<bits/stdc++.h>
 
-using namespace std;
+// https://www.geeksforgeeks.org/find-the-missing-number/
+// https://www.geeksforgeeks.org/find-the-missing-number-in-a-sorted-array/
+// https://www.geeksforgeeks.org/find-the-element-that-appears-once-in-a-sorted-array/
 
-int FindRotation(int arr[], int size) {
-    int left = 0, right = size - 1;
-    while(left <= right) {
-        if(arr[left] <= arr[right]) return left;
-        int mid = (left + right) / 2;
-        int next = (mid + 1) % size;
-        int prev = (mid - 1 + size) % size;
-        if(arr[mid] <= arr[next] && arr[mid] <= arr[prev]) 
-            return mid;
-        else if(arr[mid] <= arr[right]) 
-            right = mid - 1;
-        else if(arr[mid] >= arr[left]) 
-            left = mid + 1;
-    }
-    return -1;
-}
+// Find the element that appears once in a sorted array
+// Given a sorted array in which all elements appear twice (one after one) and one element appears only once. Find that element in O(log n) complexity.
+// https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/
 
-// Driver program 
-int main() 
+
+// C program to find the element that appears only once 
+#include<stdio.h> 
+
+// A Binary Search based function to find the element 
+// that appears only once 
+void search(int *arr, int low, int high) 
 { 
-    int arr[] = {11, 12, 15, 18, 2, 5, 6, 8}; 
-    int size = sizeof(arr)/sizeof(int); 
-  
-    int item = 1; 
-    cout << FindRotation(arr, size) << endl;
-  
-    return 0; 
-}
+	// Base cases 
+	if (low > high) 
+	return; 
+
+	if (low==high) 
+	{ 
+		printf("The required element is %d ", arr[low]); 
+		return; 
+	} 
+
+	int mid = (low + high) / 2; 
+
+	if (mid%2 == 0) 
+	{ 
+		if (arr[mid] == arr[mid+1]) 
+			search(arr, mid+2, high); 
+		else
+			search(arr, low, mid); 
+	} 
+	else 
+	{ 
+		if (arr[mid] == arr[mid-1]) 
+			search(arr, mid+1, high); 
+		else
+			search(arr, low, mid-1); 
+	} 
+} 
+
+int main() 
+{   
+    //int arr[] = {1, 1, 2, 2, 3, 3, 4};
+	int arr[] = {1, 1, 2, 4, 4, 5, 5, 6, 6}; 
+	int len = sizeof(arr)/sizeof(arr[0]); 
+	search(arr, 0, len-1); 
+	return 0; 
+} 
