@@ -17,46 +17,27 @@
 // https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/
 
 
-// C program to find the element that appears only once 
-#include<stdio.h> 
+#include<bits/stdc++.h>
 
-// A Binary Search based function to find the element 
-// that appears only once 
-void search(int *arr, int low, int high) 
-{ 
-	// Base cases 
-	if (low > high) 
-	return; 
+using namespace std;
 
-	if (low==high) 
-	{ 
-		printf("The required element is %d ", arr[low]); 
-		return; 
-	} 
+void printArr(int arr[], int size) {
+    for(int i = 0; i< size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
 
-	int mid = (low + high) / 2; 
+void sortInWaveForm(int arr[], int size) {
+    sort(arr, arr+size);
+    for(int i = 0; i < size - 1; i += 2) {
+        swap(arr[i], arr[i+1]);
+    }
+}
 
-	if (mid%2 == 0) 
-	{ 
-		if (arr[mid] == arr[mid+1]) 
-			search(arr, mid+2, high); 
-		else
-			search(arr, low, mid); 
-	} 
-	else 
-	{ 
-		if (arr[mid] == arr[mid-1]) 
-			search(arr, mid+1, high); 
-		else
-			search(arr, low, mid-1); 
-	} 
-} 
-
-int main() 
-{   
-    //int arr[] = {1, 1, 2, 2, 3, 3, 4};
-	int arr[] = {1, 1, 2, 4, 4, 5, 5, 6, 6}; 
-	int len = sizeof(arr)/sizeof(arr[0]); 
-	search(arr, 0, len-1); 
-	return 0; 
-} 
+int main() {
+    int arr[] = {10, 90, 49, 2, 1, 5, 23};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    sortInWaveForm(arr, size);
+    printArr(arr, size);
+}
