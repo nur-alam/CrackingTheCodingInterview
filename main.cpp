@@ -8,7 +8,6 @@
 //https://www.geeksforgeeks.org/sort-rotated-sorted-array/
 
 
-// https://www.geeksforgeeks.org/find-the-missing-number/
 // https://www.geeksforgeeks.org/find-the-missing-number-in-a-sorted-array/
 // https://www.geeksforgeeks.org/find-the-element-that-appears-once-in-a-sorted-array/
 
@@ -17,27 +16,29 @@
 // https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/
 
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h> 
+using namespace std; 
 
-using namespace std;
-
-void printArr(int arr[], int size) {
-    for(int i = 0; i< size; i++) {
-        cout << arr[i] << " ";
+vector<int> findSubarray(int a[], int k, int n) 
+{ 
+    vector<vector<int>> vec;
+    for(int i = 0; i <= n - k; i++) {
+        vector<int> temp;
+        for(int j = i; j < i + k; j++)
+            temp.push_back(a[j]);
+        vec.push_back(temp);
     }
-    cout << endl;
-}
-
-void sortInWaveForm(int arr[], int size) {
-    sort(arr, arr+size);
-    for(int i = 0; i < size - 1; i += 2) {
-        swap(arr[i], arr[i+1]);
-    }
-}
-
-int main() {
-    int arr[] = {10, 90, 49, 2, 1, 5, 23};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    sortInWaveForm(arr, size);
-    printArr(arr, size);
-}
+    sort(vec.begin(), vec.end());
+    return vec[vec.size() - 1];
+} 
+  
+// Driver code 
+int main() 
+{ 
+    int a[] = { 1, 4, 3, 2, 5 }; 
+    int k = 4; 
+    int n = sizeof(a) / sizeof(a[0]); 
+    vector<int> ans = findSubarray(a, k, n); 
+    for (auto it : ans) 
+        cout << it << " "; 
+} 
