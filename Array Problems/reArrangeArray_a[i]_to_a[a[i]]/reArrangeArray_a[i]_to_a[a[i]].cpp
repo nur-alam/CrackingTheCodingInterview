@@ -1,6 +1,4 @@
 // #include <bits/stdc++.h>
-// //https://www.geeksforgeeks.org/rearrange-given-array-place/
-
 // using namespace std;
 
 // void printArr(int arr[], int n) {
