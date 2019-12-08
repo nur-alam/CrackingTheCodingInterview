@@ -27,29 +27,14 @@ void printArr(int arr[], int size) {
     cout << endl;
 }
 
-// with double traversal
-void pushZeroToEnd(int arr[], int size) {
-
-    int count = 0;
-
-    for(int i = 0; i < size; i++) {
-        if(arr[i] != 0) 
-            arr[count++] = arr[i];
-    }
-
-    while(count < size) 
-        arr[count++] = 0;
-
-}
-
 // with single traversal
-// void pushZeroToEnd(int arr[], int size) {
-//     int count = 0;
-//     for(int i = 0; i < size; i++) 
-//         if(arr[i] != 0) 
-//             swap(arr[count++], arr[i]);
-//     printArr(arr, size);
-// }
+void pushZeroToEnd(int arr[], int size) {
+    int count = 0;
+    for(int i = 0; i < size; i++) 
+        if(arr[i] != 0) 
+            swap(arr[count++], arr[i]);
+    printArr(arr, size);
+}
   
 // Driver code 
 int main() 
