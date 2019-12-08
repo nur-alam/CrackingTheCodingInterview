@@ -3,7 +3,7 @@
 // https://www.geeksforgeeks.org/last-duplicate-element-sorted-array/
 // https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 //https://www.geeksforgeeks.org/find-minimum-element-in-a-sorted-and-rotated-array/
-//https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/
+//https://www.geeksforgeeksorg/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/
 //https://www.geeksforgeeks.org/check-if-an-array-is-sorted-and-rotated/
 //https://www.geeksforgeeks.org/sort-rotated-sorted-array/
 
@@ -19,26 +19,71 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-vector<int> findSubarray(int a[], int k, int n) 
-{ 
-    vector<vector<int>> vec;
-    for(int i = 0; i <= n - k; i++) {
-        vector<int> temp;
-        for(int j = i; j < i + k; j++)
-            temp.push_back(a[j]);
-        vec.push_back(temp);
+
+
+void printArr(int arr[], int size) {
+    for(int i = 0; i < size; i++) 
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+// with double traversal
+void pushZeroToEnd(int arr[], int size) {
+
+    int count = 0;
+
+    for(int i = 0; i < size; i++) {
+        if(arr[i] != 0) 
+            arr[count++] = arr[i];
     }
-    sort(vec.begin(), vec.end());
-    return vec[vec.size() - 1];
-} 
+
+    while(count < size) 
+        arr[count++] = 0;
+
+}
+
+// with single traversal
+// void pushZeroToEnd(int arr[], int size) {
+//     int count = 0;
+//     for(int i = 0; i < size; i++) 
+//         if(arr[i] != 0) 
+//             swap(arr[count++], arr[i]);
+//     printArr(arr, size);
+// }
   
 // Driver code 
 int main() 
 { 
-    int a[] = { 1, 4, 3, 2, 5 }; 
-    int k = 4; 
-    int n = sizeof(a) / sizeof(a[0]); 
-    vector<int> ans = findSubarray(a, k, n); 
-    for (auto it : ans) 
-        cout << it << " "; 
+    int arr[] = {1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    pushZeroToEnd(arr, size);
+    printArr(arr, size);
 } 
+
+
+
+// class LRUCache {
+//   public:
+//       LRUCache(int capacity) {
+//           cap = capacity;
+//       }
+//       int get(int key) {
+//          return map[key];
+//       }
+//       void put(int key, int value) {
+//          map[key] = key;
+//       }
+//   private:
+//       int cap;
+//       unordered_map<int,int> map;
+// };
+
+// int main() { 
+
+//   LRUCache cache(2);
+//   cache.put(1,3);
+//   cache.put(3,3);
+//   cout << (cache.get(3))->first << (cache.get(3))->second;
+
+//   return 0;
+// }
