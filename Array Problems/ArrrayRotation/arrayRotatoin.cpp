@@ -1,6 +1,4 @@
 // #include<bits/stdc++.h> 
-// //anagram
-// // https://www.geeksforgeeks.org/array-rotation/
 // using namespace std;
 
 // void prArr(int arr[], int n) {
