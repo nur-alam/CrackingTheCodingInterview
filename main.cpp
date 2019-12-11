@@ -14,6 +14,8 @@
 // Find the element that appears once in a sorted array
 // Given a sorted array in which all elements appear twice (one after one) and one element appears only once. Find that element in O(log n) complexity.
 // https://www.geeksforgeeks.org/find-element-appears-array-every-element-appears-twice/
+// https://www.geeksforgeeks.org/find-element-array-sum-left-array-equal-sum-right-array/
+// https://www.geeksforgeeks.org/reorder-a-array-according-to-given-indexes/
 
 
 #include <bits/stdc++.h> 
