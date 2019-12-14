@@ -33,3 +33,34 @@
 //   reverseWord(arrStr);
 //   cout << arrStr << endl;
 // }
+
+
+
+// js solution 
+
+// let arrStr = ['p', 'e', 'r', 'f', 'e', 'c', 't', ' ', 'm', 'a', 'k', 'e', 's', ' ', 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e'];
+// //to ['p', 'r', 'a', 'c', 't', 'i', 'c', 'e', ' ', 'm', 'a', 'k', 'e', 's', ' ', 'p', 'e', 'r', 'f', 'e', 'c', 't'];
+
+// function reverse(str, start, end) {
+//   while(start < end) {
+//     let char = str[start];
+//     str[start++] = str[end];
+//     str[end--] = char;
+//   }
+//   return str;
+// }
+
+// function reverseEachWords(arrStr) {
+//   reverse(arrStr, 0, arrStr.length);
+//   let start = 0, end = 0;
+//   while(end < arrStr.length) {
+//     if(arrStr[end] == ' ') {
+//       reverse(arrStr, start, end - 1);
+//       start = end + 1;
+//     }
+//     end++;
+//   }
+//   reverse(arrStr, start, end - 1);
+// }
+// reverseEachWords(arrStr);
+// console.log(arrStr);
