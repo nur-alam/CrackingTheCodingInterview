@@ -18,59 +18,65 @@
 // https://www.geeksforgeeks.org/reorder-a-array-according-to-given-indexes/
 
 
-#include <bits/stdc++.h> 
-using namespace std; 
+// lrucache with cpp vector list
+// https://leetcode.com/problems/lru-cache/discuss/324004/Cpp-solution-with-vector-and-list
 
+#include<bits/stdc++.h>
 
+using namespace std;
 
-void printArr(int arr[], int size) {
-    for(int i = 0; i < size; i++) 
-        cout << arr[i] << " ";
-    cout << endl;
+class LRUCache {
+  public:
+      LRUCache(int capacity) {
+          cap = capacity;
+      }
+      int get(int key) {
+         return map[key];
+      }
+      void put(int key, int value) {
+         map[key] = value;
+      }
+  private:
+      int cap;
+      unordered_map<int,int> map;
+      unordered_map<int, int>::iterator itr;
+};
+
+int main() { 
+
+  LRUCache* cache = new LRUCache(2);
+  cache->put(1,3);
+  cache->put(3,32);
+  int param = cache->get(3);
+  cout << param;
+  //cout << (cache.get(3))->first << (cache.get(3))->second;
+
+  return 0;
 }
 
-// with single traversal
-void pushZeroToEnd(int arr[], int size) {
-    int count = 0;
-    for(int i = 0; i < size; i++) 
-        if(arr[i] != 0) 
-            swap(arr[count++], arr[i]);
-    printArr(arr, size);
-}
-  
-// Driver code 
-int main() 
-{ 
-    int arr[] = {1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    pushZeroToEnd(arr, size);
-    printArr(arr, size);
-} 
-
-
-
-// class LRUCache {
-//   public:
-//       LRUCache(int capacity) {
-//           cap = capacity;
-//       }
-//       int get(int key) {
-//          return map[key];
-//       }
-//       void put(int key, int value) {
-//          map[key] = key;
-//       }
-//   private:
-//       int cap;
-//       unordered_map<int,int> map;
-// };
-
-// int main() { 
-
-//   LRUCache cache(2);
-//   cache.put(1,3);
-//   cache.put(3,3);
-//   cout << (cache.get(3))->first << (cache.get(3))->second;
-
-//   return 0;
+// void printArr(int arr[], int size) {
+//     for(int i = 0; i < size; i++) 
+//         cout << arr[i] << " ";
+//     cout << endl;
 // }
+
+// // with single traversal
+// void pushZeroToEnd(int arr[], int size) {
+//     int count = 0;
+//     for(int i = 0; i < size; i++) 
+//         if(arr[i] != 0) 
+//             swap(arr[count++], arr[i]);
+//     printArr(arr, size);
+// }
+  
+// // Driver code 
+// int main() 
+// { 
+//     int arr[] = {1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
+//     int size = sizeof(arr) / sizeof(arr[0]);
+//     pushZeroToEnd(arr, size);
+//     printArr(arr, size);
+// } 
+
+
+
