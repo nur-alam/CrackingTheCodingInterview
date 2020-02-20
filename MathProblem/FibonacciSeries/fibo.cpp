@@ -11,12 +11,22 @@ using namespace std;
 //     return arr[n];
 // }
 
-// fibo series with recursion
+// another dynamic programing method
 int fibo(int n) {
-    //  if(n==0 || n == 1) return 1;
-    //  else return fibo(n-1) + fibo(n-2);
-  return (n == 0 || n == 1) ? 1 : fibo(n-1) + fibo(n-2);
+  int f[n+2], i;
+  f[0] = 0, f[1] = 1;
+  for(i = 2; i<= n; i++) {
+    f[i] = f[i-1] + f[i - 2];
+  }
+  return f[n];
 }
+
+//fibo series with recursion
+// int fibo(int n) {
+//     //  if(n==0 || n == 1) return 1;
+//     //  else return fibo(n-1) + fibo(n-2);
+//   return (n == 0 || n == 1) ? 1 : fibo(n-1) + fibo(n-2);
+// }
 
 
 // int fibo(int n) {
