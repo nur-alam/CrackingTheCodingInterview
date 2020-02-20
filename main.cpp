@@ -21,6 +21,14 @@
 // lrucache with cpp vector list
 // https://leetcode.com/problems/lru-cache/discuss/324004/Cpp-solution-with-vector-and-list
 
+// wed, wednesday, 12 february, 2020
+// https://www.geeksforgeeks.org/count-number-of-occurrences-or-frequency-in-a-sorted-array/
+// https://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/
+
+
+
+
+
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -30,16 +38,35 @@ class LRUCache {
       LRUCache(int capacity) {
           cap = capacity;
       }
+      void printMap() {
+        // for(auto i=map.begin(); i!=map.end(); i++) {
+        //   cout << i->first << "=>" << i->second << " ";
+        // }
+        for(auto i : map) {
+          cout << i.first << "=>" << i.second << " ";
+        }
+        cout << endl;
+      }
       int get(int key) {
+         if(map.find(key) == map.end()) {
+           return -1;
+         }
+         int v = map[key];
+         map.erase(key);
+         map[key] = v;
          return map[key];
       }
       void put(int key, int value) {
-         map[key] = value;
+        // if(map.find(key) != map.end()) {
+        //   map.erase(key);
+        // }
+        map[key] = value;
+        printMap();
       }
   private:
       int cap;
       unordered_map<int,int> map;
-      unordered_map<int, int>::iterator itr;
+      //unordered_map<int, int>::iterator itr;
 };
 
 int main() { 
@@ -47,12 +74,20 @@ int main() {
   LRUCache* cache = new LRUCache(2);
   cache->put(1,3);
   cache->put(3,32);
-  int param = cache->get(3);
-  cout << param;
+  cache->put(2,22);
+  // int param = cache->get(3);
+  // cout << param << endl;
+  // cout << cache->get(3);
   //cout << (cache.get(3))->first << (cache.get(3))->second;
 
   return 0;
 }
+
+
+
+
+
+
 
 // void printArr(int arr[], int size) {
 //     for(int i = 0; i < size; i++) 
