@@ -34,6 +34,23 @@ void productArray(int arr[], int n) {
 
 }
 
+// space optimized solution
+void productArray(int arr[], int n) {
+  if(n == 1) { cout << 0; return; }
+  int i, j, temp = 1;
+  int* prod = (int *)malloc(n*sizeof(int));
+  for(i = 0; i<n; i++) prod[i] = 1;
+  for(i = 1; i < n; i++) {
+    prod[i] = prod[i - 1] * arr[i - 1];
+  }
+  temp = 1;
+  for(j = n - 1; j >= 0; j--) {
+    prod[j] = prod[j] * temp;
+    temp *= arr[j];
+  }
+  printArr(prod, n);
+}
+
 
 int main() {
   int arr[] = {1,2,3,4};
