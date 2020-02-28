@@ -2,6 +2,13 @@
 
 using namespace std;
 
+// typical ways to calculate (x^n) power of a number;
+float power(float x, int y) {
+  int temp = 1, i;
+  for(i = 1; i <= y; i++)
+      temp *= x;
+  return temp;
+}
 
 /* Function to calculate x raised to the power y in O(logn)*/
 float power(float x, int y)
