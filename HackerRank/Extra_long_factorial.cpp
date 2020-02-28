@@ -3,7 +3,7 @@
 // using namespace std;
 
 // #define MAX 500
-2,6,42,021,027
+
 // int multiply(int f, int fact[], int size) { 6,fact,3
 //     int carry = 0;
 //     for(int i = 0; i < size; i++) {
@@ -31,7 +31,7 @@
 //         cout << fact[i];
 //     cout << endl;
 // }
-1,2,6,42,021
+
 // void multiply(vector<long long int> &v,int n) {
 //     int i = 0, j, carry, prod;
 //     for(i = 1; i <= n; i++) {
