@@ -19,6 +19,13 @@ void print_list(Node* head) {
   }
 }
 
+void PrintListRecurWay(Node *head) {
+  if(head == NULL) return;
+  cout << head->data << " ";
+  PrintListRecurWay(head->next);
+  //cout << head->data << " "; // for reverse print
+}
+
 void append(int data, Node** head, Node** tail) {
   Node* new_node = new Node(data, NULL);
   if(*head == NULL)
@@ -50,5 +57,5 @@ int main() {
   append(15, &head, &tail);
   print_list(head); cout << endl;
   head = ReverseList(head);
-  print_list(head); cout << endl;
+  PrintListRecurWay(head); cout << endl;
 }
