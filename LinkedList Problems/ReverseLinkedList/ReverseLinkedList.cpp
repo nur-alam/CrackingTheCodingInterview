@@ -49,6 +49,18 @@ Node* ReverseList(Node* head) {
   return head;
 }
 
+Node* ReverseListRecursiveWay(Node* head) {
+  Node *temp;
+  if(head->next == NULL) {
+    return head;
+  } else {
+    temp = ReverseListRecursiveWay(head->next);
+    head->next->next = head;
+    head->next = NULL;
+  }
+  return temp;
+}
+
 int main() {
   Node* head = NULL; Node* tail = NULL;
   append(12, &head, &tail);
